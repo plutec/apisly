@@ -10,12 +10,14 @@ Actualmente soporta los siguientes procedimientos:
  - Links (capítulos y películas)
  - Notificaciones
  - Búsqueda
+ - Más valoradas por los usuarios
+ - Críticas
 
 Esta API forma parte de un proyecto algo más grande (que todavía no ha sido liberado, pero lo será en breve), por lo que está en continuo desarrollo. :D
 
 Decir que la documentación está en español porque ya que se trata de una página principalmente de uso de gente hispana, no he creído conveniente hacerla en inglés.
 
-## ¿Cómo utlizarla?
+## ¿Cómo utilizarla?
 
 ### Instalación y ejemplo
 Descomprimir la librería en la carpeta del proyecto. Simple, no?

@@ -536,3 +536,21 @@ class APISLY(object):
             to_ret.append(to_insert)
         return to_ret
 
+    """
+    Obtiene las críticas de una serie.
+    Params:
+        self, el objeto
+        idMedia, int identificativo de la serie
+        page, int (opcional) que indica el número de página. 
+            Si no se indica, es la 0
+    Returns:
+        dict con las críticas de la serie.
+    """
+    def get_serie_reviews(self, idMedia, page=None):
+        if not page:
+            page = 0
+
+        url = 'http://series.ly/scripts/comments/ajaxlist.php?id=1-%d&\
+        type=media&sort=newest&page=%d' % (idMedia, page)
+        response = self.session.get(url=url)
+        return response.json()
