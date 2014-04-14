@@ -12,6 +12,7 @@ Actualmente soporta los siguientes procedimientos:
  - Búsqueda
  - Más valoradas por los usuarios
  - Críticas
+ - Estadísticas de visionado
 
 Esta API forma parte de un proyecto algo más grande (que todavía no ha sido liberado, pero lo será en breve), por lo que está en continuo desarrollo. :D
 

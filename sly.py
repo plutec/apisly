@@ -554,3 +554,22 @@ class APISLY(object):
         type=media&sort=newest&page=%d' % (idMedia, page)
         response = self.session.get(url=url)
         return response.json()
+
+    """
+    Obtiene las estadísticas de visionado de los últimos 15 días de una serie 
+        o película
+    Params:
+        self, el objeto
+        idMedia, int identificador del contenido.
+        mediaType, int identificador del tipo de contenido
+    Returns:
+        dict con los días y visionados.
+    """
+    def get_stats(self, idMedia, mediaType):
+        
+        url = 'http://series.ly/scripts/media/mediaStats.php'
+        params = {'mediaType': mediaType,
+                  'idm': idMedia}
+        response = self.session.post(url=url, params=params)
+
+        return response.json()
