@@ -75,7 +75,8 @@ print api.get_activity()
 ## Requisitos
 
     1. Python2.7+
-    2. Python requests (>0.10) - python-requests.org
+    2. Python requests (>0.10) - python-requests.org - pip install beautifulsoup4
+    3. BeautifulSoup4 - http://www.crummy.com/software/BeautifulSoup/- pip install beautifulsoup4
 
 ## Tests
 
@@ -83,5 +84,5 @@ print api.get_activity()
 
 ## Contribuciones
 
-    Siéntete libre de hacer las mejoras que creas oportunas y hacer un pull-request.
+    Siéntete libre de hacer las mejoras que creas oportunas y hacer un pull-requests.
     Todo el trabajo realizado hasta ahora ha sido mirando el código fuente de la página y con la ayuda del depurador de Google Chrome! :D

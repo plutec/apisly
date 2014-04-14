@@ -4,6 +4,7 @@ import pickle
 import time
 import json
 import os
+from bs4 import BeautifulSoup
 
 #Constants
 SERIE = 1
@@ -504,9 +505,34 @@ class APISLY(object):
     def _parse_catalogue(self, content):
         pass
 
-    def get_most_valuated_series(self):
-        pass
+    """
+    Obtiene los recursos más valorados por los usuarios
+    Params:
+        self, el objeto
+        mediaType: int que representa el tipo de medio (SERIE, MOVIE, ...)
+    Returns:
+        Lista de diccionarios con el nombre, imagen, idMedia y mediaType
+    """
+    def get_most_valuated(self, mediaType):
+        #mediaType = SERIE, MOVIE, ...
+        try:
+            mediaType = int(mediaType)
+        except:
+            raise Exception("MediaType must be an integer")
 
-    def get_most_valuated_films(self):
-        pass
+        url = 'http://series.ly/scripts/media/allMedia.php?show=%d' % mediaType
+        response = self.session.get(url=url)
+        soup = BeautifulSoup(response.text)
+        ol = soup.find('ol', {'class':'thumbsList'})
+        lis = ol.findAll('li')
+        to_ret = list()
+        for li in lis:
+            to_insert = dict()
+            to_insert['name'] = li.find('div', {'class':'thumbTitleName'}).text
+            to_insert['thumbnail'] = li.find('img')['src']
+            to_insert['idMedia'] = li.find('a', 
+                                            {'class':'ajaxSend'})['href'][14:]
+            to_insert['mediaType'] = mediaType
+            to_ret.append(to_insert)
+        return to_ret
 
