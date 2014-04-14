@@ -520,6 +520,8 @@ class APISLY(object):
         except:
             raise Exception("MediaType must be an integer")
 
+        url_base = 'http://series.ly/%s'
+
         url = 'http://series.ly/scripts/media/allMedia.php?show=%d' % mediaType
         response = self.session.get(url=url)
         soup = BeautifulSoup(response.text)
@@ -530,7 +532,15 @@ class APISLY(object):
             to_insert = dict()
             to_insert['name'] = li.find('div', {'class':'thumbTitleName'}).text
             to_insert['thumbnail'] = li.find('img')['src']
-            to_insert['idMedia'] = li.find('a', {'class':'ajaxSend'})['href'].split('-')[1]
+            href = li.find('a', {'class':'ajaxSend'})['href']
+            if mediaType == MOVIE:
+                src = url_base % href
+                response_movie = self.session.get(url=src)
+                idMedia = self.get_between(original=response_movie.text,
+                       init_str='id="stateMedia_0" onclick="changeStatusMedia(',
+                       end_str=',0,')
+                to_insert['idMedia'] = int(idMedia)
+            to_insert['id'] = href.split('-')[1]
             to_insert['mediaType'] = mediaType
             to_ret.append(to_insert)
         return to_ret
