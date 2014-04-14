@@ -530,8 +530,7 @@ class APISLY(object):
             to_insert = dict()
             to_insert['name'] = li.find('div', {'class':'thumbTitleName'}).text
             to_insert['thumbnail'] = li.find('img')['src']
-            to_insert['idMedia'] = li.find('a', 
-                                            {'class':'ajaxSend'})['href'][14:]
+            to_insert['idMedia'] = li.find('a', {'class':'ajaxSend'})['href'].split('-')[1]
             to_insert['mediaType'] = mediaType
             to_ret.append(to_insert)
         return to_ret
