@@ -573,3 +573,22 @@ class APISLY(object):
         response = self.session.post(url=url, params=params)
 
         return response.json()
+
+    """
+    Obtiene las noticias para un contenido.
+    Params:
+        self, el objeto
+        idMedia, int identificador del contenido.
+        mediaType, int identificador del tipo de contenido.
+    Returns:
+        dict con las diferentes noticias relacionadas con el contenido.
+    """
+    def get_news(self, idMedia, mediaType):
+        url = 'http://series.ly/scripts/news/ajaxlist.php'
+
+        params = {'ac':'getFicha',
+                  'tipo':mediaType,
+                  'media':idMedia}
+        response = self.session.post(url=url, data=params)
+
+        return response.json()

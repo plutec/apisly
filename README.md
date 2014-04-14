@@ -10,9 +10,10 @@ Actualmente soporta los siguientes procedimientos:
  - Links (capítulos y películas)
  - Notificaciones
  - Búsqueda
- - Más valoradas por los usuarios
+ - Contenido más valorado por los usuarios
  - Críticas
  - Estadísticas de visionado
+ - Noticias relacionadas con el contenido
 
 Esta API forma parte de un proyecto algo más grande (que todavía no ha sido liberado, pero lo será en breve), por lo que está en continuo desarrollo. :D
 
